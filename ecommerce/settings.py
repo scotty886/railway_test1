@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 
-from django.conf.global_settings import MEDIA_ROOT
+from django.conf.global_settings import MEDIA_ROOT, CSRF_TRUSTED_ORIGINS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +29,8 @@ SECRET_KEY = 'django-insecure-r08vzst7ywt(c-c0-&!6el9v15r8awzos=dmxpr@57*h113@hc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['railwaytest1-production.up.railway.app', 'https://railwaytest1-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://railwaytest1-production.up.railway.app']
 
 
 # Application definition
