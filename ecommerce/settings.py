@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 
-from django.conf.global_settings import MEDIA_ROOT, CSRF_TRUSTED_ORIGINS
+from django.conf.global_settings import MEDIA_ROOT, CSRF_TRUSTED_ORIGINS, STATIC_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
+    'whitenoise.runserver_nostatic',  # <--- Add this line
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # <--- Add this line
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -126,6 +128,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'store/static')
 ]
+
+# White noise static files storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
