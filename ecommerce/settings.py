@@ -96,11 +96,11 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME', 'railway'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'ajOwpACCljRqjTUyUVGGhdcnJUzKeyQJ'),
+        'HOST': os.getenv('DB_HOST', 'gondola.proxy.rlwy.net'),
+        'PORT': os.getenv('DB_PORT', '59140'),
     }
 }
 
